@@ -92,6 +92,8 @@ parts:
     build-packages:
       - gcc
       - make
+      - libqt5svg5
+      - libqt5multimedia5
     stage-packages:
       - libqt5core5a
       - libqt5widgets5
