@@ -53,6 +53,8 @@ plugs:
 layout:
   /etc/fonts:
     bind: $SNAP/etc/fonts
+  /etc/pulse:
+    bind: $SNAP/etc/pulse
   /usr/share/X11:
     bind: $SNAP/usr/share/X11
 
