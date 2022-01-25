@@ -61,8 +61,8 @@ layout:
     bind: $SNAP/usr/local/share
   /usr/share/X11:
     bind: $SNAP/usr/share/X11
-  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET:
-    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET
+  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gtk-2.0/modules:
+    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gtk-2.0/modules
 
 apps:
   q5go:
