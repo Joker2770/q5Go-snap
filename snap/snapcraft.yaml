@@ -75,6 +75,12 @@ apps:
       - gsettings
       - network
       - network-bind
+      - network-manager
+      - network-manager-observe
+      - network-observe
+      - network-status
+      - network-setup-control
+      - network-setup-observe
       - process-control
       - audio-playback
     environment:
@@ -100,6 +106,8 @@ parts:
       - qtmultimedia5-dev
       - libqt5multimedia5-plugins
     stage-packages:
+      - dbus
+      - libqt5dbus5
       - libqt5core5a
       - libqt5widgets5
       - libqt5multimedia5
