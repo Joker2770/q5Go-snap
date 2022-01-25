@@ -55,8 +55,14 @@ layout:
     bind: $SNAP/etc/fonts
   /etc/pulse:
     bind: $SNAP/etc/pulse
+  /etc/dbus-1:
+    bind: $SNAP/etc/dbus-1
+  /usr/local/share:
+    bind: $SNAP/usr/local/share
   /usr/share/X11:
     bind: $SNAP/usr/share/X11
+  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET:
+    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET
 
 apps:
   q5go:
