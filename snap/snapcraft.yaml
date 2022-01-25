@@ -101,6 +101,9 @@ parts:
       - libqt5multimedia5
       - libqt5xml5
       - libqt5sql5
+      - libqt5x11extras5
+      - qttranslations5-l10n # common translations
+      - qt5-gtk-platformtheme # for theming, font settings, cursor and to use gtk3 file chooser
 
   desktop-qt5:
       source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
