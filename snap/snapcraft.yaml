@@ -94,6 +94,8 @@ apps:
       XDG_DATA_DIRS: $SNAP/share:$XDG_DATA_DIRS
       # Use GTK3 cursor theme, icon theme and open/save file dialogs.
       QT_QPA_PLATFORMTHEME: gtk3
+  gnugo:
+    command: usr/games/gnugo
 
 parts:
   q5go:
@@ -112,6 +114,7 @@ parts:
       - qtmultimedia5-dev
       - libqt5multimedia5-plugins
     stage-packages:
+      - gnugo
       - dbus
       - libqt5dbus5
       - libqt5core5a
