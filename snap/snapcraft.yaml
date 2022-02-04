@@ -66,7 +66,7 @@ layout:
 
 apps:
   q5go:
-    command: usr/local/bin/launcher.sh
+    command: usr/local/bin/q5go
     command-chain:
       - bin/desktop-launch
     plugs:
@@ -89,6 +89,7 @@ apps:
       - network-setup-observe
       - process-control
       - audio-playback
+      - mount-observe
     environment:
       DISABLE_WAYLAND: 1
       XDG_DATA_DIRS: $SNAP/share:$XDG_DATA_DIRS
