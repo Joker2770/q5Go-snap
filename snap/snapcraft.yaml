@@ -67,7 +67,7 @@ layout:
 
 apps:
   q5go:
-    command: usr/local/bin/launcher.sh
+    command: desktop-launch $SNAP/usr/local/bin/launcher.sh
     command-chain:
       - bin/desktop-launch
     plugs:
@@ -97,7 +97,7 @@ apps:
       # Use GTK3 cursor theme, icon theme and open/save file dialogs.
       QT_QPA_PLATFORMTHEME: gtk3
   gnugo:
-    command: usr/games/gnugo
+    command: desktop-launch $SNAP/usr/games/gnugo
 
 parts:
   q5go:
