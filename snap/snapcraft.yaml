@@ -62,8 +62,6 @@ layout:
     bind: $SNAP/etc/dbus-1
   /usr/local/share:
     bind: $SNAP/usr/local/share
-  /usr/share/X11:
-    bind: $SNAP/usr/share/X11
   /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gtk-2.0/modules:
     bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gtk-2.0/modules
 
