@@ -62,8 +62,6 @@ layout:
     bind: $SNAP/etc/dbus-1
   /usr/local/share:
     bind: $SNAP/usr/local/share
-  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gtk-2.0/modules:
-    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gtk-2.0/modules
 
 apps:
   q5go:
@@ -106,18 +104,21 @@ parts:
     build-packages:
       - gcc
       - make
+      - qtbase5-dev
       - libqt5svg5-dev
       - qtmultimedia5-dev
       - libqt5multimedia5-plugins
     stage-packages:
       - gnugo
       - dbus
+      - ttf-ubuntu-font-family
       - libqt5dbus5
       - libqt5core5a
       - libqt5widgets5
       - libqt5multimedia5
       - libqt5xml5
       - libqt5sql5
+      - libqt5svg5
       - libqt5x11extras5
       - qttranslations5-l10n # common translations
       - qt5-gtk-platformtheme # for theming, font settings, cursor and to use gtk3 file chooser
