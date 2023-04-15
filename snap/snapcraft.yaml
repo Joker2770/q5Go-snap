@@ -28,14 +28,15 @@ description: |
   A tool for Go players: SGF editor, analysis tool,
   game database and pattern search tool, IGS client.
 
+  **For loading GPT engines successfully, the step as follow is necessary. **
+     `sudo snap connect q5go:system-observe`
+
   _More build details: https://github.com/Joker2770/q5Go-snap.git_
 
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
-base: core20
+base: core18
 license: 'GPL-2.0+'
-architectures:
-  - build-on: amd64
 
 plugs:
   # Support for common GTK themes
@@ -62,12 +63,16 @@ layout:
     bind: $SNAP/etc/dbus-1
   /usr/local/share:
     bind: $SNAP/usr/local/share
+  /usr/share/X11:
+    bind: $SNAP/usr/share/X11
+  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gtk-2.0/modules:
+    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gtk-2.0/modules
 
 apps:
   q5go:
-    command: usr/local/bin/launcher.sh
-    extensions:
-      - kde-neon
+    command: desktop-launch $SNAP/usr/local/bin/launcher.sh
+    command-chain:
+      - bin/desktop-launch
     plugs:
       - home
       - desktop
@@ -90,13 +95,19 @@ apps:
       - audio-playback
       - mount-observe
       - system-observe
+    environment:
+      DISABLE_WAYLAND: 1
+      # XDG_DATA_DIRS: $SNAP/share:$XDG_DATA_DIRS
+      # Use GTK3 cursor theme, icon theme and open/save file dialogs.
+      # QT_QPA_PLATFORMTHEME: gtk3
   gnugo:
-    command: usr/games/gnugo
+    command: desktop-launch $SNAP/usr/games/gnugo
 
 parts:
   q5go:
+    after: [desktop-qt5]
     plugin: qmake
-    qmake-parameters:
+    options:
       - "PREFIX=/usr/local"
     source: https://github.com/bernds/q5Go.git
     source-type: git
@@ -105,24 +116,50 @@ parts:
     build-packages:
       - gcc
       - make
-      - qtbase5-dev
       - libqt5svg5-dev
       - qtmultimedia5-dev
       - libqt5multimedia5-plugins
     stage-packages:
       - gnugo
       - dbus
-      - ttf-ubuntu-font-family
       - libqt5dbus5
       - libqt5core5a
       - libqt5widgets5
       - libqt5multimedia5
       - libqt5xml5
       - libqt5sql5
-      - libqt5svg5
       - libqt5x11extras5
       - qttranslations5-l10n # common translations
       - qt5-gtk-platformtheme # for theming, font settings, cursor and to use gtk3 file chooser
+
+  desktop-qt5:
+      source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
+      source-subdir: qt
+      plugin: make
+      make-parameters: ["FLAVOR=qt5"]
+      build-packages:
+        - qtbase5-dev
+        - dpkg-dev
+      stage-packages:
+        - libxkbcommon0
+        - ttf-ubuntu-font-family
+        - dmz-cursor-theme
+        - light-themes
+        - adwaita-icon-theme
+        - gnome-themes-standard
+        - shared-mime-info
+        - libqt5gui5
+        - libgdk-pixbuf2.0-0
+        - libgtk2.0-0
+        - libqt5svg5 # for loading icon themes which are svg
+        - try: [appmenu-qt5] # not available on core18
+        - locales-all
+
+  # qt5-gtk-platform:
+    # plugin: nil
+    # stage-packages:
+      # - qt5-gtk-platformtheme
+      # - libcanberra-gtk-module
 
   include-launcher:
     plugin: dump

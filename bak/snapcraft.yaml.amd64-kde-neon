@@ -28,6 +28,9 @@ description: |
   A tool for Go players: SGF editor, analysis tool,
   game database and pattern search tool, IGS client.
 
+  **For loading GPT engines successfully, the step as follow is necessary. **
+     `sudo snap connect q5go:system-observe`
+
   _More build details: https://github.com/Joker2770/q5Go-snap.git_
 
 grade: stable # must be 'stable' to release into candidate/stable channels
