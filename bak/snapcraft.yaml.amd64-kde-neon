@@ -89,6 +89,7 @@ apps:
       - process-control
       - audio-playback
       - mount-observe
+      - system-observe
   gnugo:
     command: usr/games/gnugo
 

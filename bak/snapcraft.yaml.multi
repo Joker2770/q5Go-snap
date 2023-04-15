@@ -91,6 +91,7 @@ apps:
       - process-control
       - audio-playback
       - mount-observe
+      - system-observe
     environment:
       DISABLE_WAYLAND: 1
       # XDG_DATA_DIRS: $SNAP/share:$XDG_DATA_DIRS
