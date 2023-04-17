@@ -29,6 +29,7 @@ description: |
   game database and pattern search tool, IGS client.
 
   **For loading GPT engines successfully, the step as follow is necessary. **
+
      `sudo snap connect q5go:system-observe`
 
   _More build details: https://github.com/Joker2770/q5Go-snap.git_
@@ -111,7 +112,6 @@ parts:
       - qtbase5-dev
       - libqt5svg5-dev
       - qtmultimedia5-dev
-      - libqt5multimedia5-plugins
     stage-packages:
       - gnugo
       - dbus
@@ -120,6 +120,7 @@ parts:
       - libqt5core5a
       - libqt5widgets5
       - libqt5multimedia5
+      - libqt5multimedia5-plugins
       - libqt5xml5
       - libqt5sql5
       - libqt5svg5
