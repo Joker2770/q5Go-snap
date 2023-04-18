@@ -30,7 +30,7 @@ description: |
 
   **For loading GPT engines successfully, the step as follow is necessary. **
 
-     `sudo snap connect q5go:system-observe`
+     sudo snap connect q5go:system-observe
 
   _More build details: https://github.com/Joker2770/q5Go-snap.git_
 
@@ -92,6 +92,7 @@ apps:
       - network-setup-observe
       - process-control
       - audio-playback
+      - hardware-observe
       - mount-observe
       - system-observe
   gnugo:
@@ -115,6 +116,7 @@ parts:
     stage-packages:
       - gnugo
       - dbus
+      - libglu1-mesa
       - ttf-ubuntu-font-family
       - libqt5dbus5
       - libqt5core5a
