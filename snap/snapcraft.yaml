@@ -31,6 +31,8 @@ description: |
   **For loading GPT engines successfully, the step as follow is necessary. **
 
      sudo snap connect q5go:system-observe
+     sudo snap connect q5go:system-trace
+     sudo snap connect q5go:process-control
 
   _More build details: https://github.com/Joker2770/q5Go-snap.git_
 
@@ -97,6 +99,7 @@ apps:
       - hardware-observe
       - mount-observe
       - system-observe
+      - system-trace
     environment:
       DISABLE_WAYLAND: 1
       # XDG_DATA_DIRS: $SNAP/share:$XDG_DATA_DIRS
